@@ -136,12 +136,15 @@ heima-jizhang/                     项目根目录
 - 未购买数字签名证书：安装时 Windows 可能提示"未知发布者"，点"更多信息 → 仍要运行"即可（属正常现象）
 - macOS 安装包（dmg）须在 Mac 电脑上执行 `npm run build:win` 对应命令生成（苹果限制），代码无需改动
 
-## 代码仓库（Gitee，2026-08-19 首次推送）
+## 代码仓库（Gitee + GitHub 双备份，2026-08-19 首次推送）
 
-- 远程仓库：`git@gitee.com:sazeny/jizhang-app.git`（SSH 方式；账号 sazeny；分支 master）
+- Gitee（外号 origin）：`git@gitee.com:sazeny/jizhang-app.git`（账号 sazeny）
+- GitHub（外号 github）：`git@github.com:notazeny/first.git`（账号 notazeny）
+- 两个远程共用同一把 SSH 钥匙（~/.ssh/id_ed25519），本地分支统一为 master
+- 推送命令：`git push origin master`（Gitee）、`git push github master`（GitHub）
 - 本机 Windows 用户名为中文，Windows 自带 ssh 无法自动找到家目录下的钥匙 → 本仓库已设置 `core.sshCommand` 显式指定钥匙路径（`git config --get core.sshCommand` 可查）；换电脑或克隆到新机器后需重新设置
 - .gitignore 已排除 node_modules/、out/、dist/、.claude/——上传的只有源码与文档；**账目数据不在仓库里**，数据始终只在本机 %APPDATA%\黑马记账
-- 更新流程：改完代码后执行 `git add -A && git commit -m "改动说明" && git push`
+- 更新流程：改完代码后执行 `git add -A && git commit -m "改动说明" && git push origin master && git push github master`
 
 ## 项目执行计划
 
